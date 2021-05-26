@@ -1,0 +1,22 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "photo-gallery",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "GoogleAuth" : {
+      "scopes": [
+        "profile",
+        "email"
+      ],
+      "serverClientId": "467759711194-7kji9fq6dsqa6tmthhis48b12lvajhlv.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  },
+  "cordova": {},
+  "windowsAndroidStudioPath": "C:\\Users\\e.kolchenko\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\202.7322048\\bin\\studio64.exe"
+}

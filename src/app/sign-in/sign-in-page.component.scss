@@ -1,0 +1,118 @@
+ion-content {
+  --overflow: hidden;
+}
+
+.sign-in-content {
+  text-align: center;
+  --padding-bottom: 16px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  --padding-top: 16px;
+
+  .login-icon {
+    font-size: 40vw;
+  }
+
+  .form-content {
+    max-height: 50%;
+  }
+
+  .auth-title {
+    font-family: Gilroy ExtraBold, serif;
+    margin-bottom: 1vh;
+    letter-spacing: -0.015em;
+  }
+
+  .social-auth-options {
+    margin-top: 2vh;
+
+    .options-divider {
+      font-family: Gilroy ExtraBold, serif;
+      text-align: center;
+      margin: 0;
+    }
+
+    .social-auth-buttons {
+      justify-content: center;
+      margin-top: 0.5vh;
+
+      .social-auth-btn {
+        font-family: Gilroy ExtraBold, serif;
+        letter-spacing: -0.015em;
+        text-transform: inherit;
+        color: white;
+        --background: var(--ion-color-danger);
+        --border-radius: 3vh !important;
+      }
+
+      .google-icon {
+        margin-right: 2vw;
+      }
+    }
+  }
+
+  .inputs-list {
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+    .input-item {
+      --padding-start: 0px;
+      --padding-end: 0px;
+      --inner-padding-end: 0px;
+    }
+
+    .ion-input-text {
+      font-family: Gilroy ExtraBold, serif;
+    }
+  }
+
+  .error-container {
+    .error-message {
+      margin: 1.5vh 0;
+      display: flex;
+      align-items: center;
+      color: var(--ion-color-danger);
+      font-size: 0.8rem;
+
+      ion-icon {
+        font-size: 0.8rem;
+        padding-inline-end: 5px;
+      }
+
+      .error-text {
+        font-family: Gilroy ExtraBold, serif;
+      }
+    }
+  }
+
+  .sign-in-btn {
+    text-transform: none;
+    --background: #2DAB66;
+    --box-shadow: none;
+    --border-radius: 3vh !important;
+    font-family: Gilroy ExtraBold, serif;
+    color: aliceblue;
+    font-size: 6vmin;
+    height: 10vmin;
+    width: 35vmin;
+    letter-spacing: -0.015em;
+  }
+
+  .sign-buttons {
+    margin-top: 1vh;
+    justify-content: center;
+  }
+
+  .sign-up-btn-wrapper {
+    justify-content: flex-end;
+    align-items: center;
+
+    .sign-up-btn {
+      height: 2vh;
+      font-family: Gilroy ExtraBold, serif;
+      color: #2DAB66;
+      letter-spacing: -0.015em;
+      text-transform: capitalize;
+    }
+  }
+}
