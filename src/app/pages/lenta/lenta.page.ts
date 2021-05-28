@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
-import {CloudStorageService, Photo} from "../services/cloud-storage.service";
+import {PhotoStorageService, Photo} from "../services/photo-storage.service";
 import {ModalController} from "@ionic/angular";
 import {CardInfoComponent} from "../../components/card-info/card-info.component";
 
@@ -20,7 +20,7 @@ export class LentaPage implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              public cloudStorageService: CloudStorageService,
+              public cloudStorageService: PhotoStorageService,
               public modalCtrl: ModalController) {
 
   }

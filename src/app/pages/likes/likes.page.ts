@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LikesStorageService} from "../services/likes-storage.service";
 import {AuthService} from "../services/auth.service";
 import {Observable} from "rxjs";
-import {Photo} from "../services/cloud-storage.service";
+import {Photo} from "../services/photo-storage.service";
 
 @Component({
   selector: 'app-likes',
@@ -19,7 +19,7 @@ export class LikesPage implements OnInit {
   }
 
   photos(): Observable<Photo[]> {
-    return this.likesStorageService.getLikePhotos(this.authService.currentUser.uid)
+    return this.likesStorageService.likedPhotosByUserUid(this.authService.currentUser.uid)
   }
 
 }

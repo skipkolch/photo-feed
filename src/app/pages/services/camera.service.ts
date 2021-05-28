@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CloudStorageService} from "./cloud-storage.service";
+import {PhotoStorageService} from "./photo-storage.service";
 
 import {CameraPhoto, CameraResultType, CameraSource, Plugins} from '@capacitor/core';
 
@@ -8,9 +8,9 @@ const { Camera } = Plugins;
 @Injectable({
   providedIn: 'root'
 })
-export class PhotoService {
+export class CameraService {
 
-  constructor(private storageService: CloudStorageService) {
+  constructor(private storageService: PhotoStorageService) {
   }
 
   public async takePhoto(): Promise<any> {

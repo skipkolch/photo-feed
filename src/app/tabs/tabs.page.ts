@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {PhotoService} from "../pages/services/photo.service";
+import {CameraService} from "../pages/services/camera.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class TabsPage {
 
-  constructor(private photoService: PhotoService, private router: Router) {}
+  constructor(private photoService: CameraService, private router: Router) {}
 
 
   takePhoto() {

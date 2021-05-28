@@ -6,7 +6,7 @@ import {IonicModule} from '@ionic/angular';
 
 import {PersonPage} from './person.page';
 import {RouterModule, Routes} from "@angular/router";
-import {UnionModule} from "../../union/union.module";
+import {UnionModule} from "../../union.module";
 
 const routes: Routes = [
   {

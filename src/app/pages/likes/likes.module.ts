@@ -7,7 +7,7 @@ import {IonicModule} from '@ionic/angular';
 import {LikesPage} from './likes.page';
 import {LazyLoadImageModule} from "ng-lazyload-image";
 import {RouterModule, Routes} from "@angular/router";
-import {UnionModule} from "../../union/union.module";
+import {UnionModule} from "../../union.module";
 
 const routes: Routes = [
   {

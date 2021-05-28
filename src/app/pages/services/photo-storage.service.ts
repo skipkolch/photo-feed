@@ -5,7 +5,6 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/firest
 import {distinct, map, mergeMap} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {DocumentChangeAction} from "@angular/fire/firestore/interfaces";
-import {LikesStorageService} from "./likes-storage.service";
 
 export const IMAGES_STORE_KEY = 'files'
 export const PHOTOS_STORE_KEY = 'photos'
@@ -32,33 +31,20 @@ function photo(action): Photo {
 @Injectable({
   providedIn: 'root'
 })
-export class CloudStorageService {
+export class PhotoStorageService {
   changes: number = 0;
 
   constructor(private angularFireStorage: AngularFireStorage,
               private angularFireStore: AngularFirestore,
-              private authService: AuthService,
-              private likesService: LikesStorageService) {
+              private authService: AuthService) {
 
   }
 
-  photosByUserUid(uid: string): Observable<Photo[]> {
+  public photosByUserUid(uid: string): Observable<Photo[]> {
     return this.angularFireStore.collection<Photo>(`photos/${uid}/items`).valueChanges({ idField: 'id' })
   }
 
-  photos(): AngularFirestoreCollection<UserPhotos> {
-    return this.angularFireStore.collection<UserPhotos>(PHOTOS_STORE_KEY);
-  }
-
-  photoById(uid: string) {
-    return this.angularFireStore.doc(`${PHOTOS_STORE_KEY}/${uid}`);
-  }
-
-  itemsInPhoto(uid): AngularFirestoreCollection<Photo> {
-    return this.photoById(uid).collection('items');
-  }
-
-  async uploadFile(file: Blob) {
+  public async uploadFile(file: Blob) {
     const randomId = Math.random().toString(36).substring(2, 8);
     const time = new Date().getTime();
     const fileName = `${IMAGES_STORE_KEY}/${time}_${randomId}`;
@@ -75,25 +61,33 @@ export class CloudStorageService {
     });
   }
 
-  percentageChanges(): number {
+  public percentageChanges(): number {
     return this.changes;
   }
 
-  resetPercentage() {
+  public resetPercentage() {
     this.changes = 0;
   }
 
-  loadPhotos(): Observable<Photo> {
-    return this.photoChanges(uid => this.itemsInPhoto(uid).snapshotChanges(['added']));
+  public loadPhotos(): Observable<Photo> {
+    return this.photoChanges(uid => this.itemsInPhotoByUid(uid).snapshotChanges(['added']));
   }
 
-  deletePhotos(): Observable<Photo> {
-    return this.photoChanges(uid => this.itemsInPhoto(uid).stateChanges(['removed']));
+  public deletePhotos(): Observable<Photo> {
+    return this.photoChanges(uid => this.itemsInPhotoByUid(uid).stateChanges(['removed']));
   }
 
-  async deletePhoto(photo: Photo): Promise<any> {
+  public async deletePhoto(photo: Photo): Promise<any> {
     await this.angularFireStore.collection(`photos/${photo.user}/items`).doc(photo.id).delete();
     return this.angularFireStorage.storage.ref().child(photo.fileName).delete();
+  }
+
+  private photos(): AngularFirestoreCollection<UserPhotos> {
+    return this.angularFireStore.collection<UserPhotos>(PHOTOS_STORE_KEY);
+  }
+
+  private itemsInPhotoByUid(uid: string): AngularFirestoreCollection<Photo> {
+    return this.angularFireStore.doc(`${PHOTOS_STORE_KEY}/${uid}`).collection('items');
   }
 
   private photoChanges(project: (value: string, index: number) => Observable<DocumentChangeAction<Photo>[]>): Observable<Photo> {

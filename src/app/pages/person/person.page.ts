@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService, User} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {CloudStorageService, Photo} from "../services/cloud-storage.service";
+import {PhotoStorageService, Photo} from "../services/photo-storage.service";
 
 @Component({
   selector: 'app-person',
@@ -14,7 +14,7 @@ export class PersonPage implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private cloudStorage: CloudStorageService) {
+              private cloudStorage: PhotoStorageService) {
   }
 
   ngOnInit() {

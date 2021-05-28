@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CloudStorageService, Photo} from "../../pages/services/cloud-storage.service";
+import {PhotoStorageService, Photo} from "../../pages/services/photo-storage.service";
 import {ModalController} from "@ionic/angular";
 import {UserStorageService} from "../../pages/services/user-storage.service";
 import {AuthService} from "../../pages/services/auth.service";
@@ -20,7 +20,7 @@ export class CardInfoComponent implements OnInit {
 
   constructor(public modalCtrl: ModalController,
               private userStorageService: UserStorageService,
-              private storageService: CloudStorageService,
+              private storageService: PhotoStorageService,
               private authService: AuthService,
               private likesService: LikesStorageService) {
   }
@@ -31,7 +31,7 @@ export class CardInfoComponent implements OnInit {
       .subscribe(like => this.isLiked = like);
     this.userStorageService.getUser(this.photo.user)
       .subscribe(userInfo => this.userEmail = userInfo.email);
-    this.likesService.getLikes(this.photo.id)
+    this.likesService.likesNumberById(this.photo.id)
       .subscribe(likes => this.likes = likes);
   }
 
@@ -41,7 +41,7 @@ export class CardInfoComponent implements OnInit {
 
   deletePhoto() {
     this.storageService.deletePhoto(this.photo).then(_ => {
-      this.likesService.deleteLikes(this.photo.id).then(_ =>
+      this.likesService.deleteLikesById(this.photo.id).then(_ =>
         this.userStorageService.removeLike(this.photo, this.authService.currentUser.uid))
       this.dismiss()
     });
@@ -54,7 +54,7 @@ export class CardInfoComponent implements OnInit {
   }
 
   unlike() {
-    this.likesService.removeLike(this.photo.id, this.authService.currentUser.uid).then(_ =>
+    this.likesService.deleteLike(this.photo.id, this.authService.currentUser.uid).then(_ =>
       this.userStorageService.removeLike(this.photo, this.authService.currentUser.uid)
     )
   }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Photo} from "../../pages/services/cloud-storage.service";
+import {Photo} from "../../pages/services/photo-storage.service";
 import {CardInfoComponent} from "../card-info/card-info.component";
 import {ModalController} from "@ionic/angular";
 import {Observable} from "rxjs";
