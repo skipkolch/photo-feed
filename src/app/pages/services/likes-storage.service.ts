@@ -2,12 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {CloudStorageService, Photo} from "./cloud-storage.service";
-
-// export interface Like {
-//   quantity: number,
-//   users: string[]
-// }
+import {Photo} from "./cloud-storage.service";
 
 export const LIKES_STORE_KEY = 'likes'
 
@@ -24,8 +19,9 @@ export class LikesStorageService {
       .pipe(map(collection => collection.length))
   }
 
+  //*
   getLikePhotos(user: string): Observable<Photo[]> {
-    return this.angularFireStore.collection<Photo>(`users/${user}/likes`).valueChanges();
+    return this.angularFireStore.collection<Photo>(`users/${user}/likes`).valueChanges({ idField: 'id' });
   }
 
   deleteLikes(id: string) {
@@ -40,6 +36,7 @@ export class LikesStorageService {
   }
 
   async addLike(id: string, user: string) {
+    await this.angularFireStore.collection(LIKES_STORE_KEY).doc(id).set({});
     await this.likesCollection(id).doc(user).set({});
   }
 

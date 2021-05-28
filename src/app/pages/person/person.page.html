@@ -1,12 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="title">Your person page</ion-title>
+    <ion-title class="title-bold">Your person page</ion-title>
   </ion-toolbar>
   <ion-progress-bar color="warning"></ion-progress-bar>
 </ion-header>
 
 <ion-content>
 
-  <ion-button (click)="logOut()"></ion-button>
-<!--  <app-photo-grid [photos]="photos"></app-photo-grid>-->
+  <ion-title class="title">
+    <div class="title-bold">Hello ,</div>
+    <div class="title-light">{{user.email}}</div>
+  </ion-title>
+
+  <ion-buttons class="log-out">
+    <ion-button class="log-out-btn" (click)="logOut()">LogOut</ion-button>
+  </ion-buttons>
+
+  <div style="border: 1px solid #dadada;"></div>
+  <app-photo-grid [photosObservable]="personPhotos()"  [pageName]="'PERSON'"></app-photo-grid>
 </ion-content>

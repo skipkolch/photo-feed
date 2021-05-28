@@ -12,18 +12,20 @@ import {Observable} from "rxjs";
 export class PhotoGridComponent implements OnInit {
   photos: Photo[] = []
   @Input() photosObservable: Observable<Photo[]>
+  @Input() pageName: string;
 
   constructor(private modalCtrl: ModalController) {
   }
 
   ngOnInit() {
     this.photosObservable.subscribe(p => {
-      console.log("LIKES", p);
+      console.log(`Grid in ${this.pageName}`, p);
       this.photos = p;
     })
   }
 
   async openPhoto(photo: Photo) {
+    console.log(photo);
     let photoInfoModal = await this.modalCtrl.create({
       component: CardInfoComponent,
       cssClass: 'photo-info',

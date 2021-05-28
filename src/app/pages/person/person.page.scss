@@ -3,12 +3,31 @@ ion-header.header-md::after {
 }
 
 .title {
+  padding-top: 6vh;
+  padding-bottom: 45%;
+}
+
+.title-bold {
   font-family: Gilroy ExtraBold, serif;
+  text-align: center;
+}
+
+.title-light {
+  font-family: Gilroy Light, serif;
   text-align: center;
 }
 
 img.ng-lazyloaded {
   animation: fadein 2.5s;
+}
+
+.log-out {
+  justify-content: center;
+}
+
+.log-out-btn {
+  font-family: Gilroy ExtraBold, serif;
+  font-size: 1.5em;
 }
 
 @keyframes fadein {

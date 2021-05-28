@@ -42,6 +42,10 @@ export class CloudStorageService {
 
   }
 
+  photosByUserUid(uid: string): Observable<Photo[]> {
+    return this.angularFireStore.collection<Photo>(`photos/${uid}/items`).valueChanges({ idField: 'id' })
+  }
+
   photos(): AngularFirestoreCollection<UserPhotos> {
     return this.angularFireStore.collection<UserPhotos>(PHOTOS_STORE_KEY);
   }
@@ -66,8 +70,8 @@ export class CloudStorageService {
 
       await this.angularFireStore.collection(`${PHOTOS_STORE_KEY}`).doc(`${user.uid}`).set({})
       await this.angularFireStore.collection(`${PHOTOS_STORE_KEY}/${user.uid}/items`).add(
-        { id: "", fileName: fileName, user: user.uid, time: time, url: await result.ref.getDownloadURL() } as Photo
-      ).then(value => this.likesService.initLikes(value.id))
+        { fileName: fileName, user: user.uid, time: time, url: await result.ref.getDownloadURL() } as Photo
+      )
     });
   }
 
