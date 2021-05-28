@@ -1,0 +1,22 @@
+ion-header.header-md::after {
+  background-image: none;
+}
+
+.title {
+  font-family: Gilroy ExtraBold, serif;
+  text-align: center;
+}
+
+img.ng-lazyloaded {
+  animation: fadein 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

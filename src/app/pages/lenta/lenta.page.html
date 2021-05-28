@@ -1,0 +1,15 @@
+<ion-header translucent="true" class="header">
+  <ion-toolbar>
+    <ion-title class="title">Photo feed</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar [value]="this.cloudStorageService.percentageChanges()" color="warning"></ion-progress-bar>
+</ion-header>
+<ion-content class="content">
+  <ion-card class="bath-card" *ngFor="let photo of photos.slice(0, limit)" (click)="presentInfo(photo)">
+    <img class="img-card" [defaultImage]="defaultImage" [lazyLoad]="photo.url">
+  </ion-card>
+  <ion-infinite-scroll threshold="25%" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

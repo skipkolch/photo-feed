@@ -21,13 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'sign-in',
-    loadChildren: () => import('./sign-in/sing-in.module').then(m => m.SingInPageModule),
+    loadChildren: () => import('./pages/sign-in/sing-in.module').then(m => m.SingInPageModule),
     canLoad: [IntroGuard],
     ...canActivate(redirectLoggedInToChat)
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sing-up.module').then(m => m.SingUpPageModule)
+    loadChildren: () => import('./pages/sign-up/sing-up.module').then(m => m.SingUpPageModule)
   },
   {
     path: 'intro',

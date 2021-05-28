@@ -1,0 +1,51 @@
+ion-header.header-md::after {
+  background-image: none;
+}
+
+.header {
+  box-shadow: none;
+  background: #ffffff;
+}
+
+.bath-card {
+  margin-top: 5vw;
+  margin-left: 6vw;;
+  margin-right: 6vw;;
+  border-radius: 3.5vh;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 9%);
+
+  :focus {
+    outline: none;
+  }
+}
+
+.img-card {
+  border-radius: 3.5vh;
+}
+
+.bath-card-class {
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  color: white;
+  font-size: 7vmin;
+}
+
+.title {
+  font-family: Gilroy ExtraBold, serif;
+  text-align: center;
+}
+
+img.ng-lazyloaded {
+  animation: fadein 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

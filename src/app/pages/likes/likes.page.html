@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Your liked photos</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar color="warning"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <app-photo-grid [photosObservable]="photos()"></app-photo-grid>
+</ion-content>

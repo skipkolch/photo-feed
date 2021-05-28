@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {PhotoService} from "../pages/services/photo.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private photoService: PhotoService, private router: Router) {}
 
+
+  takePhoto() {
+    this.photoService.takePhoto();
+    this.router.navigateByUrl('/', { replaceUrl: true });
+  }
 }

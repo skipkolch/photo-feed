@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { CanLoad, Router } from '@angular/router';
-import { Plugins } from '@capacitor/core';
+import {Injectable} from '@angular/core';
+import {CanLoad, Router} from '@angular/router';
 
-const { Storage } = Plugins;
+
+import {Plugins} from '@capacitor/core';
+
+const { Camera, Storage } = Plugins;
 
 export const INTRO_KEY = 'intro-seen';
 
@@ -15,7 +17,7 @@ export class IntroGuard implements CanLoad {
   }
 
   async canLoad(): Promise<boolean> {
-    const hasSeenIntro = await Storage.get({key: INTRO_KEY});
+    const hasSeenIntro = await Storage.get({ key: INTRO_KEY });
     if (hasSeenIntro && (hasSeenIntro.value === 'true')) {
       return true;
     } else {

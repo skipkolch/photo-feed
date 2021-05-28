@@ -1,0 +1,55 @@
+<ion-content fullscreen="true">
+
+  <div class="dark-background"></div>
+  <div class="filter-content">
+    <ion-button slot="icon-only" class="hide-filter" expand="full" (click)="dismiss()">
+      <ion-icon name="chevron-down-outline" class="close-filter-icon"></ion-icon>
+    </ion-button>
+    <div class="img-content">
+      <img class="img-card" [lazyLoad]="photo.url">
+    </div>
+  </div>
+
+  <div>
+    <ion-list class="list-footer">
+
+      <ion-item lines="inset" class="item-filter">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label class="select-label">PostData:</ion-label>
+        <ion-label class="select-item">{{photo.time | date :'short'}}</ion-label>
+      </ion-item>
+
+      <ion-item lines="inset" class="item-filter">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label class="select-label">User:</ion-label>
+        <ion-label class="select-item">{{userEmail}}</ion-label>
+      </ion-item>
+
+      <ion-item lines="inset" class="item-filter">
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-label class="select-label">Likes:</ion-label>
+        <ion-label class="select-item">{{likes}}</ion-label>
+      </ion-item>
+
+      <ion-item lines="inset" class="item-filter" *ngIf="isOwner">
+        <ion-buttons>
+          <ion-button (click)="deletePhoto()">Delete</ion-button>
+        </ion-buttons>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-fab-button color="white" size="small" (click)="like()" *ngIf="!isLiked else unlikeButton">
+    <ion-icon name="heart-outline" style="color: #747474"></ion-icon>
+  </ion-fab-button>
+</ion-footer>
+
+
+<ng-template #unlikeButton>
+  <ion-fab-button color="white" size="small" (click)="unlike()">
+    <ion-icon name="heart" style="color: red"></ion-icon>
+  </ion-fab-button>
+</ng-template>

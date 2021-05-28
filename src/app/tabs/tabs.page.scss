@@ -1,1 +1,21 @@
+.tab-bar {
+  --color: #ffffff;
+}
 
+.tab-button {
+  --background-focused: #BDBDBD;
+  --color: #BDBDBD;
+  --color-selected: rgb(249, 138, 23);
+  --ripple-color: transparent;
+  max-width: 100px;
+
+}
+
+.tab-button.tab-selected > ion-icon {
+  font-size: 4.5vh;
+  stroke-width: 1.2px;
+}
+
+.icon-button {
+  font-size: 4vh;
+}

@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {TabsPage} from './tabs.page';
+import {PhotoGridComponent} from "../components/photo-grid/photo-grid.component";
 
 const routes: Routes = [
   {
@@ -8,20 +9,24 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'lenta',
+        loadChildren: () => import('../pages/lenta/lenta.module').then(m => m.LentaPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'search',
+        loadChildren: () => import('../pages/search/search.module').then(m => m.SearchPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'likes',
+        loadChildren: () => import('../pages/likes/likes.module').then(m => m.LikesPageModule)
+      },
+      {
+        path: 'person',
+        loadChildren: () => import('../pages/person/person.module').then(m => m.PersonPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/lenta',
         pathMatch: 'full'
       }
     ]
@@ -31,4 +36,5 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule {
+}

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
-import { Storage } from '@ionic/storage';
+import {Component} from '@angular/core';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {Platform} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {AuthService} from './pages/services/auth.service';
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'app-root',

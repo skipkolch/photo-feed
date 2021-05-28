@@ -11,8 +11,9 @@ import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import {AuthService} from './services/auth.service';
+import {AuthService} from './pages/services/auth.service';
 import {AngularFireStorageModule} from "@angular/fire/storage";
+import {LazyLoadImageModule} from "ng-lazyload-image";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    LazyLoadImageModule,
   ],
   providers: [
     AuthService,

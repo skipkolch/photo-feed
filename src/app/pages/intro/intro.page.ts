@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {IonSlides} from "@ionic/angular";
-import {Plugins} from "@capacitor/core";
 import {INTRO_KEY} from "../../guards/intro.guard";
 import {Router} from "@angular/router";
 
+import {Plugins} from '@capacitor/core';
 
 const { Storage } = Plugins;
 
