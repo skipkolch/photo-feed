@@ -31,11 +31,11 @@ export class SignInPage implements OnInit {
     private authService: AuthService,
   ) {
     this.signInForm = new FormGroup({
-      email: new FormControl('qwerty@gmail.com', Validators.compose([
+      email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
-      password: new FormControl('qwerty', Validators.compose([
+      password: new FormControl('', Validators.compose([
         Validators.minLength(6),
         Validators.required
       ]))
